@@ -18,25 +18,34 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="d-flex ms-auto align-items-center" style="margin-right: 30px;">
                     @auth
+                        <a class="nav-link me-3 fw-bold" href="{{ route('index') }}">HOME</a>
+                        <a class="nav-link me-3 fw-bold" href="{{ route('products.index') }}">PRODUCTS</a>
                         @if (Auth::user()->roles[0]->name == 'admin')
-                            <a class="nav-link me-3 fw-bold" href="{{ route('index') }}">HOME</a>
-                            <a class="nav-link me-3 fw-bold" href="{{ route('products.index') }}">PRODUCTS</a>
-                            <a class="nav-link me-3 fw-bold" href="#">MANAGE PRODUCT</a>
-                            <button class="btn fw-bold bg-info" type="button"
-                                onclick="location.href='{{ route('login') }}'">LOGIN</button>
-                        @else
-                            <a class="nav-link me-3 fw-bold" href="{{ route('index') }}">HOME</a>
-                            <a class="nav-link me-3 fw-bold" href="{{ route('products.index') }}">PRODUCTS</a>
-                            <button class="btn fw-bold bg-info" type="button"
-                                onclick="location.href='{{ route('login') }}'">LOGIN</button>
+                            <a class="nav-link me-3 fw-bold" href="{{ route('dashboard.admin.index') }}">MANAGE PRODUCT</a>
                         @endif
+                        <div class="dropdown">
+                            <button class="btn fw-bold bg-info dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     @else
+                        <a class="nav-link me-3 fw-bold" href="{{ route('index') }}">HOME</a>
+                        <a class="nav-link me-3 fw-bold" href="{{ route('products.index') }}">PRODUCTS</a>
                         <button class="btn fw-bold bg-info" type="button"
                             onclick="location.href='{{ route('login') }}'">LOGIN</button>
                     @endauth
                 </div>
             </div>
-
         </div>
     </nav>
 

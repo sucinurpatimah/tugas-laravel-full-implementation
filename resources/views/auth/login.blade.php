@@ -14,7 +14,7 @@
             <div class="card bg-white w-100 rounded-2" style="border: 1px solid black;">
                 <h2 class="text-center fw-bold my-3">Halaman Login User</h2>
                 <div class="card-body">
-                    <form action="{{ route('login.store') }}" method="POST">
+                    <form action="{{ route('login.authenticate') }}" method="POST">
                         @csrf
 
                         <div class="mb-3">

@@ -43,7 +43,7 @@
                                         style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
                                         {{ $item->description }}
                                     </p>
-                                    <button class="btn btn-primary w-100 mt-auto">Pesan Sekarang</button>
+                                    <a href="{{ route('login') }}" class="btn btn-primary my-auto">Pesan Sekarang</a>
                                 </div>
                             </div>
                         </div>
