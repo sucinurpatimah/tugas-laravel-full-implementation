@@ -11,17 +11,32 @@
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid" style="margin-left: 20px;">
+        <div class="container-fluid" style="margin-left: 30px;">
             <a class="navbar-brand" href="https://dashboard.amandemy.co.id/">
                 <img src="https://amandemy.co.id/images/amandemy-logo.png" alt="Logo" style="width: 150px;">
             </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="d-flex ms-auto align-items-center" style="margin-right: 20px;">
-                    <a class="nav-link me-3 fw-bold" href="{{ route('index') }}">Home</a>
-                    <a class="nav-link me-3 fw-bold" href="/products">Products</a>
-                    <button class="btn fw-bold bg-info" type="button" onclick="location.href='/login'">Login</button>
+                <div class="d-flex ms-auto align-items-center" style="margin-right: 30px;">
+                    @auth
+                        @if (Auth::user()->roles[0]->name == 'admin')
+                            <a class="nav-link me-3 fw-bold" href="{{ route('index') }}">HOME</a>
+                            <a class="nav-link me-3 fw-bold" href="{{ route('products.index') }}">PRODUCTS</a>
+                            <a class="nav-link me-3 fw-bold" href="#">MANAGE PRODUCT</a>
+                            <button class="btn fw-bold bg-info" type="button"
+                                onclick="location.href='{{ route('login') }}'">LOGIN</button>
+                        @else
+                            <a class="nav-link me-3 fw-bold" href="{{ route('index') }}">HOME</a>
+                            <a class="nav-link me-3 fw-bold" href="{{ route('products.index') }}">PRODUCTS</a>
+                            <button class="btn fw-bold bg-info" type="button"
+                                onclick="location.href='{{ route('login') }}'">LOGIN</button>
+                        @endif
+                    @else
+                        <button class="btn fw-bold bg-info" type="button"
+                            onclick="location.href='{{ route('login') }}'">LOGIN</button>
+                    @endauth
                 </div>
             </div>
+
         </div>
     </nav>
 

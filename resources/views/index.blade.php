@@ -14,8 +14,11 @@
                 Immerse yourself in a world of endless possibilities, curated just for you. Whether you're hunting for
                 unique finds,
                 everyday essentials, or extraordinary gifts, we've got you covered.</p>
-            <button type="button" class="btn bg-info" style="display: block; text-align: left; font-weight: bold;">Buy
-                Now!</button>
+            <button type="button" class="btn bg-info" style="display: block; text-align: left; font-weight: bold;"
+                onclick="location.href='{{ route('products.index') }}'">
+                Buy Now!
+            </button>
+
         </div>
         <div class="gambar" style="text-align: center; align-self: center;">
             <img src="https://i.pinimg.com/originals/a1/bf/e9/a1bfe97b8083558db9c0f58da914d11e.jpg" alt="Gambar E-Commerce"
